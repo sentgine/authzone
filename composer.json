@@ -1,0 +1,36 @@
+{
+    "name": "sentgine/authzone",
+    "description": "Visual UI for managing Roles and Permissions for Laravel.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Sentgine\\Authzone\\": "src/"
+        },
+        "files": [
+            "helpers/functions.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Sentgine\\Authzone\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Sentgine\\Authzone\\AuthzoneServiceProvider"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "Adrian Fernando II Alconera Navaja",
+            "email": "sentgine@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "spatie/laravel-permission": "^5.0"
+    }
+}
