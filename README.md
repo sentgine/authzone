@@ -47,11 +47,15 @@ use HasRoles;
 - Jetstream
 - Breeze
 
+If you are using tailwind, then you will have no problem using Jetstream or Breeze. But if you're using other CSS framework, you're going to have to use the Authzone default.
+
 #### Authzone default:
+Running this command will publish all the config file, routes, and all the views. This is great if you want to modify the overall design.
+
 ```bash
 php artisan authzone:install
 ```
-or
+Or you have to option not to publish the views. Instead, you will just use the existing default design.
 ```bash
 php artisan authzone:install --noviews
 ```
@@ -63,6 +67,31 @@ or
 ```bash
 php artisan authzone:install --jetstream --noviews
 ```
+
+Using Jetstream, you will have to go to your Laravel App's root directory and under the /resources/views/navigation-menu.blade.php add this navigation menu @authzoneJetstreamNavMenu and @authzoneJetstreamNavMenuResponsive directive within the <x-slot name="content">.
+
+```php
+@if (Laravel\Jetstream\Jetstream::hasApiFeatures())
+    <x-dropdown-link href="{{ route('api-tokens.index') }}">
+        {{ __('API Tokens') }}
+    </x-dropdown-link>
+@endif
+
+@authzoneJetstreamNavMenu
+
+... The rest of the code
+```
+And the same applies to the navigation menu for the mobile view. Ideally, I would put it under the "Profile" link.
+```php
+<x-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
+    {{ __('Profile') }}
+</x-responsive-nav-link>
+
+@authzoneJetstreamNavMenuResponsive
+
+... The rest of the code
+```
+
 #### Breeze:
 ```bash
 php artisan authzone:install --breeze
@@ -70,6 +99,28 @@ php artisan authzone:install --breeze
 or
 ```bash
 php artisan authzone:install --breeze --noviews
+```
+
+Using Breeze, you will still have to go to your Laravel App's root directory and under the /resources/views/layouts/navigation-menu.blade.php add this navigation menu @authzoneBreezeNavMenu and @authzoneBreezeNavMenuResponsive directive within the <x-slot name="content">.
+
+```php
+<x-dropdown-link :href="route('profile.edit')">
+    {{ __('Profile') }}
+</x-dropdown-link>   
+
+@authzoneBreezeNavMenu
+
+... The rest of the code
+```
+And the same applies to the navigation menu for the mobile view. Ideally, I would put it under the "Dashboard" link.
+```php
+<x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+    {{ __('Dashboard') }}
+</x-responsive-nav-link>
+
+@authzoneBreezeNavMenuResponsive
+
+... The rest of the code
 ```
 
 (6) Open your tailwind.config.js on your Laravel Application's root directory andd this to the "content" key (See: https://laravel.com/docs/10.x/pagination).
