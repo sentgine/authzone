@@ -37,17 +37,17 @@ php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvid
 php artisan migrate
 ```
 
-(4) Open the App\Models\User.php and add the HasRoles trait.
+(4) Open the App\Models\User.php and add the HasRoles trait from Spatie\Permission\Traits\HasRoles;
 ```bash
 use HasRoles;
 ```
 
-(5) After that, you can choose 3 GUI's to install (Make sure you're in the root of your Laravel package):
+(5) After that, you can choose 3 GUI's to install (Make sure you're in the root of your Laravel application):
 - Authzone default
 - Jetstream
 - Breeze
 
-If you are using tailwind, then you will have no problem using Jetstream or Breeze. But if you're using other CSS framework, you're going to have to use the Authzone default.
+If you are using Tailwind CSS, then you will have no problem using Jetstream or Breeze. But if you're using another CSS framework, you're going to have to use the Authzone default.
 
 #### Authzone default:
 Running this command will publish all the config file, routes, and all the views. This is great if you want to modify the overall design.
@@ -60,6 +60,7 @@ Or you have to option not to publish the views. Instead, you will just use the e
 php artisan authzone:install --noviews
 ```
 #### Jetstream:
+Running this command will publish all the config file, routes, and all the views related to Jetstream.
 ```bash
 php artisan authzone:install --jetstream
 ```
@@ -68,7 +69,7 @@ or
 php artisan authzone:install --jetstream --noviews
 ```
 
-Using Jetstream, you will have to go to your Laravel App's root directory and under the /resources/views/navigation-menu.blade.php add this navigation menu @authzoneJetstreamNavMenu and @authzoneJetstreamNavMenuResponsive directive within the <x-slot name="content">.
+Using Jetstream, you will have to go to your Laravel App's root directory and under the /resources/views/navigation-menu.blade.php add this navigation menu @authzoneJetstreamNavMenu and @authzoneJetstreamNavMenuResponsive directive.
 
 ```php
 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -93,6 +94,7 @@ And the same applies to the navigation menu for the mobile view. Ideally, I woul
 ```
 
 #### Breeze:
+Running this command will publish all the config file, routes, and all the views related to Breeze.
 ```bash
 php artisan authzone:install --breeze
 ```
@@ -101,7 +103,7 @@ or
 php artisan authzone:install --breeze --noviews
 ```
 
-Using Breeze, you will still have to go to your Laravel App's root directory and under the /resources/views/layouts/navigation-menu.blade.php add this navigation menu @authzoneBreezeNavMenu and @authzoneBreezeNavMenuResponsive directive within the <x-slot name="content">.
+Using Breeze, you will still have to go to your Laravel App's root directory and under the /resources/views/layouts/navigation-menu.blade.php add this navigation menu @authzoneBreezeNavMenu and @authzoneBreezeNavMenuResponsive directive.
 
 ```php
 <x-dropdown-link :href="route('profile.edit')">
@@ -128,12 +130,7 @@ And the same applies to the navigation menu for the mobile view. Ideally, I woul
 './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
 ```
 
-(7) Open the App\Models\User.php and add the HasRoles trait from Spatie\Permission\Traits\HasRoles;
-```bash
-use HasRoles;
-```
-
-(8) Optional, but you're gonna probably want to protect some of your rotes based on user role. If that's the case, you can visit the [Middleware Section of Laravel Permission](https://spatie.be/docs/laravel-permission/v5/basic-usage/middleware).
+(7) Optional, but you're gonna probably want to protect some of your routes based on user role. If that's the case, you can visit the [Middleware Section of Laravel Permission](https://spatie.be/docs/laravel-permission/v5/basic-usage/middleware).
 
 ## Configuration
 The configuration file for AuthZone is located at config/authzone.php. This file allows you to customize various aspects of the package, such as the views, model and route group.
