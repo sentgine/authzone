@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Sentgine\Authzone\Services\SearchService;
 
-class PermissionsController extends Controller
+class PermissionController extends Controller
 {
     private $searchService;
 

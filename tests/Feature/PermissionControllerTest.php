@@ -10,27 +10,27 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Session;
-use Sentgine\Authzone\Http\Controllers\PermissionsController;
+use Sentgine\Authzone\Http\Controllers\PermissionController;
 use Spatie\Permission\Models\Permission;
 
-class PermissionsControllerTest extends TestCase
+class PermissionControllerTest extends TestCase
 {
     use RefreshDatabase;
 
     protected $connection = 'testing';
 
     /**
-     * Returns the instance of the PermissionsController
+     * Returns the instance of the PermissionController
      * 
-     * @return PermissionsController
+     * @return PermissionController
      */
-    private function instanceOfController(): PermissionsController
+    private function instanceOfController(): PermissionController
     {
         // Pass the search service class as a new instance
         $searchService = new SearchService();
 
         // Instantiate controller
-        return new PermissionsController($searchService);
+        return new PermissionController($searchService);
     }
 
     /**
@@ -51,7 +51,7 @@ class PermissionsControllerTest extends TestCase
      */
     public function test_index_has_permissions_list(): void
     {
-        // Instance of the PermissionsController
+        // Instance of the PermissionController
         $controller = $this->instanceOfController();
 
         // Create a mock instance of Request
@@ -74,7 +74,7 @@ class PermissionsControllerTest extends TestCase
      */
     public function test_create_returns_view(): void
     {
-        // Instance of the PermissionsController
+        // Instance of the PermissionController
         $controller = $this->instanceOfController();
 
         // Run the create method
@@ -98,7 +98,7 @@ class PermissionsControllerTest extends TestCase
             'guard_name' => 'web',
         ]);
 
-        // Instance of the PermissionsController
+        // Instance of the PermissionController
         $controller = $this->instanceOfController();
 
         // Run the store function
@@ -129,7 +129,7 @@ class PermissionsControllerTest extends TestCase
             'guard_name' => 'web',
         ]);
 
-        // Instance of the permissions controller
+        // Instance of the permission controller
         $controller = $this->instanceOfController();
 
         // Run the store function
@@ -159,7 +159,7 @@ class PermissionsControllerTest extends TestCase
             'guard_name' => 'web',
         ]);
 
-        // Instance of the PermissionsController
+        // Instance of the PermissionController
         $controller = $this->instanceOfController();
 
         // Run the store function first to save the permission to the database.
@@ -185,7 +185,7 @@ class PermissionsControllerTest extends TestCase
      */
     public function test_edit_returns_view(): void
     {
-        // Instance of the PermissionsController
+        // Instance of the PermissionController
         $controller = $this->instanceOfController();
 
         // Create a new permission.
@@ -208,7 +208,7 @@ class PermissionsControllerTest extends TestCase
      */
     public function test_update_permission_returns_status_302(): void
     {
-        // Instance of the PermissionsController
+        // Instance of the PermissionController
         $controller = $this->instanceOfController();
 
         // Create a dummy request
@@ -244,7 +244,7 @@ class PermissionsControllerTest extends TestCase
      */
     public function test_delete_permission_returns_status_302(): void
     {
-        // Instance of the PermissionsController
+        // Instance of the PermissionController
         $controller = $this->instanceOfController();
 
         // Create a new permission

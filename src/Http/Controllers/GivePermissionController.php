@@ -10,7 +10,7 @@ use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Sentgine\Authzone\Services\SearchService;
 
-class GivePermissionsController extends Controller
+class GivePermissionController extends Controller
 {
     private $searchService;
     private $role;

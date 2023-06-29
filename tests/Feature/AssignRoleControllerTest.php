@@ -12,28 +12,28 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Session;
-use Sentgine\Authzone\Http\Controllers\AssignRolesController;
+use Sentgine\Authzone\Http\Controllers\AssignRoleController;
 use Spatie\Permission\Models\Permission;
 
-class AssignRolesControllerTest extends TestCase
+class AssignRoleControllerTest extends TestCase
 {
     use RefreshDatabase;
 
     protected $connection = 'testing';
 
     /**
-     * Returns the instance of the AssignRolesController
+     * Returns the instance of the AssignRoleController
      * 
-     * @return AssignRolesController
+     * @return AssignRoleController
      */
-    private function instanceOfController(): AssignRolesController
+    private function instanceOfController(): AssignRoleController
     {
         // Pass the search service class and the new role as new instances
         $searchService = new SearchService();
         $role = new Role();
 
         // Instantiate controller
-        return new AssignRolesController($searchService, $role);
+        return new AssignRoleController($searchService, $role);
     }
 
     /**
@@ -54,7 +54,7 @@ class AssignRolesControllerTest extends TestCase
      */
     public function test_index_has_roles_and_users_list(): void
     {
-        // Instance of the RolesController
+        // Instance of the RoleController
         $controller = $this->instanceOfController();
 
         // Create a mock instance of Request
@@ -78,7 +78,7 @@ class AssignRolesControllerTest extends TestCase
      */
     public function test_edit_returns_view(): void
     {
-        // Instance of the RolesController
+        // Instance of the RoleController
         $controller = $this->instanceOfController();
 
         // Create a user
@@ -98,7 +98,7 @@ class AssignRolesControllerTest extends TestCase
      */
     public function test_update_assign_roles_to_the_user_returns_status_302(): void
     {
-        // Instance of the RolesController
+        // Instance of the RoleController
         $controller = $this->instanceOfController();
 
         // Create a new role.
@@ -152,7 +152,7 @@ class AssignRolesControllerTest extends TestCase
      */
     public function test_remove_role_from_the_user_returns_status_302(): void
     {
-        // Instance of the RolesController
+        // Instance of the RoleController
         $controller = $this->instanceOfController();
 
         // Create a new role.
@@ -209,7 +209,7 @@ class AssignRolesControllerTest extends TestCase
      */
     public function test_bulk_assign_a_role_to_a_user_returns_status_302(): void
     {
-        // Instance of the RolesController
+        // Instance of the RoleController
         $controller = $this->instanceOfController();
 
         // Create a new role.
@@ -244,7 +244,7 @@ class AssignRolesControllerTest extends TestCase
      */
     public function test_remove_roles_from_all_user_returns_status_302(): void
     {
-        // Instance of the RolesController
+        // Instance of the RoleController
         $controller = $this->instanceOfController();
 
         // Create a new role.

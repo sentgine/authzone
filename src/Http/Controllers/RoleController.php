@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Sentgine\Authzone\Services\SearchService;
 use Spatie\Permission\Models\Role;
 
-class RolesController extends Controller
+class RoleController extends Controller
 {
     private $searchService;
     private $role;

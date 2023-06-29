@@ -11,22 +11,22 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Session;
-use Sentgine\Authzone\Http\Controllers\GivePermissionsController;
+use Sentgine\Authzone\Http\Controllers\GivePermissionController;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
-class GivePermissionsControllerTest extends TestCase
+class GivePermissionControllerTest extends TestCase
 {
     use RefreshDatabase;
 
     protected $connection = 'testing';
 
     /**
-     * Returns the instance of the GivePermissionsController
+     * Returns the instance of the GivePermissionController
      * 
-     * @return GivePermissionsController
+     * @return GivePermissionController
      */
-    private function instanceOfController(): GivePermissionsController
+    private function instanceOfController(): GivePermissionController
     {
         // Pass the search service class as a new instance
         $searchService = new SearchService();
@@ -34,7 +34,7 @@ class GivePermissionsControllerTest extends TestCase
         $permission = new Permission();
 
         // Instantiate controller
-        return new GivePermissionsController($searchService, $role, $permission);
+        return new GivePermissionController($searchService, $role, $permission);
     }
 
     /**
@@ -55,7 +55,7 @@ class GivePermissionsControllerTest extends TestCase
      */
     public function test_index_has_roles_with_permissions_list(): void
     {
-        // Instance of the PermissionsController
+        // Instance of the PermissionController
         $controller = $this->instanceOfController();
 
         // Create a mock instance of Request
@@ -99,7 +99,7 @@ class GivePermissionsControllerTest extends TestCase
             'permissions' => $permission->name
         ]);
 
-        // Instance of the GivePermissionsController
+        // Instance of the GivePermissionController
         $controller = $this->instanceOfController();
 
         // Run the store function
@@ -151,7 +151,7 @@ class GivePermissionsControllerTest extends TestCase
             'isAll' => true,
         ]);
 
-        // Instance of the GivePermissionsController
+        // Instance of the GivePermissionController
         $controller = $this->instanceOfController();
 
         // Run the store function
@@ -174,7 +174,7 @@ class GivePermissionsControllerTest extends TestCase
      */
     public function test_revoke_all_permissions_returns_status_302(): void
     {
-        // Instance of the GivePermissionsController
+        // Instance of the GivePermissionController
         $controller = $this->instanceOfController();
 
         // Create a new role.
@@ -200,7 +200,7 @@ class GivePermissionsControllerTest extends TestCase
      */
     public function test_revoke_single_permission_from_a_role_returns_status_302(): void
     {
-        // Instance of the GivePermissionsController
+        // Instance of the GivePermissionController
         $controller = $this->instanceOfController();
 
         // Create a new role.

@@ -4,7 +4,7 @@ namespace Sentgine\Authzone\Tests\Feature;
 
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Http\Request;
-use Sentgine\Authzone\Http\Controllers\RolesController;
+use Sentgine\Authzone\Http\Controllers\RoleController;
 use Sentgine\Authzone\Services\SearchService;
 use Spatie\Permission\Models\Role;
 use Tests\TestCase;
@@ -13,25 +13,25 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Session;
 
-class RolesControllerTest extends TestCase
+class RoleControllerTest extends TestCase
 {
     use RefreshDatabase;
 
     protected $connection = 'testing';
 
     /**
-     * Returns the instance of the RolesController
+     * Returns the instance of the RoleController
      * 
-     * @return RolesController
+     * @return RoleController
      */
-    private function instanceOfController(): RolesController
+    private function instanceOfController(): RoleController
     {
         // Pass the search service class and the new role as new instances
         $searchService = new SearchService();
         $role = new Role();
 
         // Instantiate controller
-        return new RolesController($searchService, $role);
+        return new RoleController($searchService, $role);
     }
 
     /**
@@ -52,7 +52,7 @@ class RolesControllerTest extends TestCase
      */
     public function test_index_has_roles_list(): void
     {
-        // Instance of the RolesController
+        // Instance of the RoleController
         $controller = $this->instanceOfController();
 
         // Create a mock instance of Request
@@ -75,7 +75,7 @@ class RolesControllerTest extends TestCase
      */
     public function test_create_returns_view(): void
     {
-        // Instance of the RolesController
+        // Instance of the RoleController
         $controller = $this->instanceOfController();
 
         // Run the create method
@@ -155,7 +155,7 @@ class RolesControllerTest extends TestCase
      */
     public function test_edit_returns_view(): void
     {
-        // Instance of the RolesController
+        // Instance of the RoleController
         $controller = $this->instanceOfController();
 
         // Create a new role.
@@ -178,7 +178,7 @@ class RolesControllerTest extends TestCase
      */
     public function test_update_role_returns_status_302(): void
     {
-        // Instance of the RolesController
+        // Instance of the RoleController
         $controller = $this->instanceOfController();
 
         // Create a dummy request
@@ -214,7 +214,7 @@ class RolesControllerTest extends TestCase
      */
     public function test_delete_role_returns_status_302(): void
     {
-        // Instance of the RolesController
+        // Instance of the RoleController
         $controller = $this->instanceOfController();
 
         // Create a new role

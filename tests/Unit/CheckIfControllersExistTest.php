@@ -13,7 +13,7 @@ class CheckIfControllersExistTest extends BaseClassUnitTest
      */
     public function test_roles_controller_exists(): void
     {
-        $this->is_class_exists($this->namespace . '\RolesController');
+        $this->is_class_exists($this->namespace . '\RoleController');
     }
 
     /**
@@ -23,7 +23,7 @@ class CheckIfControllersExistTest extends BaseClassUnitTest
      */
     public function test_permissions_controller_exists(): void
     {
-        $this->is_class_exists($this->namespace . '\PermissionsController');
+        $this->is_class_exists($this->namespace . '\PermissionController');
     }
 
     /**
@@ -33,7 +33,7 @@ class CheckIfControllersExistTest extends BaseClassUnitTest
      */
     public function test_give_permissions_controller_exists(): void
     {
-        $this->is_class_exists($this->namespace . '\GivePermissionsController');
+        $this->is_class_exists($this->namespace . '\GivePermissionController');
     }
 
     /**
@@ -43,7 +43,7 @@ class CheckIfControllersExistTest extends BaseClassUnitTest
      */
     public function test_assign_roles_controller_exists(): void
     {
-        $this->is_class_exists($this->namespace . '\AssignRolesController');
+        $this->is_class_exists($this->namespace . '\AssignRoleController');
     }
 
     /**
