@@ -4,8 +4,8 @@ namespace Sentgine\Authzone\Http\Controllers;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Sentgine\Authzone\Services\SearchService;
 use Spatie\Permission\Models\Role;
 
@@ -40,14 +40,14 @@ class AssignRoleController extends Controller
 
         return view(authzone_view_path('assign-roles.index'), compact('users', 'roles'));
     }
-    /**
-     * Assign roles to the user.
-     * 
-     * @param int $userId
-     * 
-     * @return View
-     */
-    public function edit(int $userId): View
+  /**
+   * Assign roles to the user.
+   * 
+   * @param int|string $userId
+   * 
+   * @return View
+   */
+    public function edit(int|string $userId): View
     {
         // Find the specific user by id
         $user = authzone_user_model()->find($userId);
@@ -61,15 +61,15 @@ class AssignRoleController extends Controller
         return view(authzone_view_path('assign-roles.edit'), compact('user', 'roles', 'userRoles'));
     }
 
-    /**
-     * Update the specified role.
-     * 
-     * @param Request $request
-     * @param Role $role
-     * 
-     * @return RedirectResponse
-     */
-    public function update(Request $request, int $userId): RedirectResponse
+  /**
+   * Update the specified role.
+   * 
+   * @param Request $request
+   * @param int|string $userId
+   * 
+   * @return RedirectResponse
+   */
+    public function update(Request $request, int|string $userId): RedirectResponse
     {
         // Find the specific user
         $user = authzone_user_model()::find($userId);
@@ -89,14 +89,15 @@ class AssignRoleController extends Controller
         return back()->with('message', "Assigned a role(s) to $user->email.");
     }
 
-    /**
-     * Remove role from the user.
-     * 
-     * @param Role $role
-     * 
-     * @return RedirectResponse
-     */
-    public function removeRole(int $userId, Role $role): RedirectResponse
+  /**
+   * Remove role from the user.
+   * 
+   * @param int|string $userId
+   * @param Role $role
+   * 
+   * @return RedirectResponse
+   */
+    public function removeRole(int|string $userId, Role $role): RedirectResponse
     {
         authzone_user_model()->find($userId)->removeRole($role->name);
         return back();
